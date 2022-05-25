@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import os,sys
 VERSION = '1.2.7'
 
 R = '\033[31m'  # red
@@ -77,28 +77,22 @@ from signal import SIGTERM
 
 
 def banner():
-	with open(META_FILE, 'r') as metadata:
-		json_data = loads(metadata.read())
-		twitter_url = json_data['twitter']
-		comms_url = json_data['comms']
-
-	art = r'''
-                        __
-  ______  ____   ____  |  | __  ____ _______
- /  ___/_/ __ \_/ __ \ |  |/ /_/ __ \\_  __ \
- \___ \ \  ___/\  ___/ |    < \  ___/ |  | \/
-/____  > \___  >\___  >|__|_ \ \___  >|__|
-     \/      \/     \/      \/     \/'''
-	print(f'{G}{art}{W}\n')
-	print(f'{G}[>] {C}Created By   : {W}thewhiteh4t')
-	print(f'{G} |---> {C}Twitter   : {W}{twitter_url}')
-	print(f'{G} |---> {C}Community : {W}{comms_url}')
-	print(f'{G}[>] {C}Version      : {W}{VERSION}\n')
+	os.system('clear')
+	print("""\33[90m
+  ███    ███ ██████      ██████  ██ ██   ██ ██
+  ████  ████ ██   ██     ██   ██ ██ ██  ██  ██
+  ██ ████ ██ ██████      ██████  ██ █████   ██
+  ██  ██  ██ ██   ██     ██   ██ ██ ██  ██  ██
+  ██      ██ ██   ██ ██  ██   ██ ██ ██   ██ ██
+\33[94m•••••••••••••••••••••••••••••••••••••••••••••••••
+\33[92mAUTHOR   : MR. RIKI
+GITHUB   : RIKI-404-CYBER
+FACEBOOK : MR. RIKI
+WHATSAPP : MR. RIKI
+\33[94m•••••••••••••••••••••••••••••••••••••••••••••••••""")
 
 
 def template_select(site):
-	print(f'{Y}[!] Select a Template :{W}\n')
-
 	with open(TEMPLATES_JSON, 'r') as templ:
 		templ_info = templ.read()
 
@@ -109,7 +103,8 @@ def template_select(site):
 		print(f'{G}[{templ_json["templates"].index(item)}] {C}{name}{W}')
 
 	try:
-		selected = int(input(f'{G}[>] {W}'))
+		print ('\33[94m•••••••••••••••••••••••••••••••••••••••••••••••••')
+		selected = int(input(f'{G}[•] SELECT : {W}'))
 		if selected < 0:
 			print()
 			print(f'{R}[-] {C}Invalid Input!{W}')
